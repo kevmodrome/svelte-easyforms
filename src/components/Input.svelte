@@ -16,6 +16,7 @@
   export let errorMessage = "";
   export let multiline;
   export let textareaHeight = "150px";
+  export let font = "Work Sans";
 
   onMount(() => {
     values.updateValue(name, initialValue);
@@ -37,7 +38,6 @@
 
 <style lang="scss">
   label {
-    font-family: "Work Sans";
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 1fr;
@@ -45,7 +45,6 @@
   input,
   textarea {
     box-sizing: border-box;
-    font-family: "Work Sans";
     border: 4px solid #cdd7d6;
     border-radius: 10px;
     font-size: 15px;
@@ -70,12 +69,12 @@
   }
 </style>
 
-<label class:full>
+<label class:full style="font-family: {font}">
   {title}
   {#if multiline}
     <div style="min-height: {textareaHeight}">
       <textarea
-        style="min-height: {textareaHeight}"
+        style="min-height: {textareaHeight}; font-family: {font}"
         on:keyup={onChange}
         on:change={onChange}
         on:blur={onBlur}
@@ -87,6 +86,7 @@
     </div>
   {:else}
     <input
+      style="font-family: {font}"
       {type}
       {name}
       {placeholder}

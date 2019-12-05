@@ -12,6 +12,7 @@
   export let buttonText = "SUBMIT";
   export let resetText = "RESET";
   export let reset;
+  export let font;
 
   export let debug;
 
@@ -58,7 +59,7 @@
 
 <form action="">
   {#each inputs as input}
-    <Input {...input} />
+    <Input {...input} {font} />
   {/each}
   <div class="button-container">
     <Button primary click={handleSubmit}>
