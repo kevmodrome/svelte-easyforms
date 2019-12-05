@@ -5,7 +5,7 @@
   export let click;
 </script>
 
-<style lang="scss">
+<style>
   button {
     cursor: pointer;
     border: none;
@@ -19,19 +19,19 @@
     background: #d62246;
     border: solid #d62246 2px;
     color: white;
-    &:hover {
-      background: #b41a39;
-      border: solid #b41a39 2px;
-    }
+  }
+  .primary:hover {
+    background: #b41a39;
+    border: solid #b41a39 2px;
   }
   .primaryOutline {
     background: none;
     border: solid #d62246 2px;
     color: #d62246;
-    &:hover {
-      color: #b41a39;
-      border: solid #b41a39 2px;
-    }
+  }
+  .primaryOutline:hover {
+    color: #b41a39;
+    border: solid #b41a39 2px;
   }
 </style>
 

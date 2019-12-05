@@ -35,7 +35,7 @@
   $: errors.updateError(name, !validator($values[name]));
 </script>
 
-<style lang="scss">
+<style>
   label {
     display: grid;
     grid-gap: 5px;
@@ -48,13 +48,15 @@
     border-radius: 10px;
     font-size: 15px;
     padding: 15px;
-    &::placeholder {
-      font-style: bold;
-      color: rgba(0, 0, 0, 0.4);
-    }
-    &:focus {
-      border: 4px solid #140f2d;
-    }
+  }
+  input::placeholder,
+  textarea::placeholder {
+    font-style: bold;
+    color: rgba(0, 0, 0, 0.4);
+  }
+  input:focus,
+  textarea:focus {
+    border: 4px solid #140f2d;
   }
   .full {
     grid-column: -1 / 1;
