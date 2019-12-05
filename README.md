@@ -2,6 +2,8 @@
 
 A very opinionated form library for Svelte. Currently only supports inputs and textarea.
 
+[DEMO](https://svelte.dev/repl/d133210432dc47758674ac6a9233e370?version=3.16.0)
+
 Usage:
 
 ```javascript
