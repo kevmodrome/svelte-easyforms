@@ -5,9 +5,9 @@ function createTouched() {
 
   return {
     subscribe,
-    updateTouched: field =>
+    updateTouched: (field, value = true) =>
       update(n => {
-        return { ...n, [field]: true };
+        return { ...n, [field]: value };
       }),
     reset: () => set({})
   };

@@ -4,8 +4,6 @@
   import { errors } from "../stores/errors.js";
   import { touched } from "../stores/touched.js";
   import { autoresize } from "../actions/autoresize.js";
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
 
   export let placeholder = "";
   export let full = false;
@@ -22,6 +20,7 @@
   onMount(() => {
     values.updateValue(name, initialValue);
     errors.updateError(name, !validator(initialValue));
+    touched.updateTouched(name, false);
   });
 
   function onChange(event) {
@@ -76,6 +75,7 @@
       <textarea
         style="min-height: {textareaHeight}"
         on:keyup={onChange}
+        on:change={onChange}
         on:blur={onBlur}
         class:error={$errors[name] && $touched[name]}
         {name}
@@ -89,6 +89,7 @@
       {placeholder}
       value={$values[name] || initialValue}
       on:keyup={onChange}
+      on:change={onChange}
       on:blur={onBlur}
       class:error={$errors[name] && $touched[name]} />
   {/if}

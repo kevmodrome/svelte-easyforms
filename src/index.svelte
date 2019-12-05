@@ -13,21 +13,27 @@
   export let resetText = "RESET";
   export let reset;
 
-  let formFields = {};
+  const handleSubmit = () => {
+    const numberOfErrors = Object.keys($errors).filter(key => $errors[key]);
+    const fieldsNotTouched = Object.keys($touched).filter(
+      key => !$touched[key]
+    );
 
-  let updateFormField = (form, field, value) => {
-    form = { ...form, [field]: value };
-    return form;
-  };
-
-  const handleInputEvent = e => {
-    formFields = updateFormField(formFields, e.detail.name, e.detail.value);
+    if (numberOfErrors.length === 0 && fieldsNotTouched.length === 0) {
+      console.log("SUBMITTING!");
+      resetForm();
+    } else {
+      console.log("Not submitting!");
+    }
   };
 
   const resetForm = () => {
-    values.reset();
-    errors.reset();
-    touched.reset();
+    inputs.forEach(input => {
+      values.updateValue(input.name);
+    });
+    inputs.forEach(input => {
+      touched.updateTouched(input.name, false);
+    });
   };
 </script>
 
@@ -52,10 +58,10 @@
 
 <form action="">
   {#each inputs as input}
-    <Input on:change={handleInputEvent} {...input} />
+    <Input {...input} />
   {/each}
   <div class="button-container">
-    <Button primary click={() => dispatch('submit', formFields)}>
+    <Button primary click={handleSubmit}>
       <span>{buttonText}</span>
     </Button>
     {#if reset}
