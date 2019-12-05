@@ -46,7 +46,7 @@
   textarea {
     box-sizing: border-box;
     font-family: "Work Sans";
-    border: 4px solid var(--cream);
+    border: 4px solid #cdd7d6;
     border-radius: 10px;
     font-size: 15px;
     padding: 15px;
@@ -55,7 +55,7 @@
       color: rgba(0, 0, 0, 0.4);
     }
     &:focus {
-      border: 4px solid var(--secondary-dark);
+      border: 4px solid #140f2d;
     }
   }
   .full {

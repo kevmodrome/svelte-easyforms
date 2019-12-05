@@ -16,21 +16,21 @@
     padding: 20px 35px;
   }
   .primary {
-    background: var(--primary);
-    border: solid var(--primary) 2px;
+    background: #d62246;
+    border: solid #d62246 2px;
     color: white;
     &:hover {
-      background: var(--primary-dark);
-      border: solid var(--primary-dark) 2px;
+      background: #b41a39;
+      border: solid #b41a39 2px;
     }
   }
   .primaryOutline {
     background: none;
-    border: solid var(--primary) 2px;
-    color: var(--primary);
+    border: solid #d62246 2px;
+    color: #d62246;
     &:hover {
-      color: var(--primary-dark);
-      border: solid var(--primary-dark) 2px;
+      color: #b41a39;
+      border: solid #b41a39 2px;
     }
   }
 </style>
