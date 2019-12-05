@@ -15,7 +15,7 @@
   export let errorMessage = "";
   export let multiline;
   export let textareaHeight = "150px";
-  export let font = "Work Sans";
+  export let font = "Verdana";
 
   onMount(() => {
     values.updateValue(name, initialValue);

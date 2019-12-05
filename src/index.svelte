@@ -12,7 +12,7 @@
   export let buttonText = "SUBMIT";
   export let resetText = "RESET";
   export let reset;
-  export let font;
+  export let font = "Verdana";
 
   export let debug;
 
@@ -46,7 +46,6 @@
   }
   span {
     font-size: 20px;
-    font-family: "Work Sans";
     font-weight: bold;
   }
   .button-container {
@@ -57,17 +56,17 @@
   }
 </style>
 
-<form action="">
+<form style="font-family: {font}">
   {#each inputs as input}
     <Input {...input} {font} />
   {/each}
   <div class="button-container">
     <Button primary click={handleSubmit}>
-      <span>{buttonText}</span>
+      <span style="font-family: {font}">{buttonText}</span>
     </Button>
     {#if reset}
       <Button primaryOutline click={resetForm}>
-        <span>{resetText}</span>
+        <span style="font-family: {font}">{resetText}</span>
       </Button>
     {/if}
   </div>
