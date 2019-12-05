@@ -1,9 +1,10 @@
 {
   "name": "svelte-easyforms",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "svelte": "src/index.svelte",
   "module": "index.mjs",
   "main": "index.js",
+  "repository": "https://github.com/kevmodrome/svelte-easyforms",
   "scripts": {
     "build": "rollup -c",
     "prepublishOnly": "npm run build"
