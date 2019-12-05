@@ -42,7 +42,7 @@ const submitForm = e => {
 And your HTML:
 
 ```html
-<form {inputs} buttonText="SEND MESSAGE" on:submit="{submitForm}" reset />
+<orm {inputs} buttonText="SEND MESSAGE" on:submit="{submitForm}" reset />
 ```
 
 Options:
