@@ -31,6 +31,8 @@
     values.updateValue(name, event.target.value);
     touched.updateTouched(name);
   }
+
+  $: errors.updateError(name, !validator($values[name]));
 </script>
 
 <style lang="scss">

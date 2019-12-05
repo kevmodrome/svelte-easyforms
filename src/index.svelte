@@ -13,13 +13,15 @@
   export let resetText = "RESET";
   export let reset;
 
+  export let debug;
+
   const handleSubmit = () => {
     const numberOfErrors = Object.keys($errors).filter(key => $errors[key]);
-    const fieldsNotTouched = Object.keys($touched).filter(
-      key => !$touched[key]
-    );
+    inputs.forEach(input => {
+      touched.updateTouched(input.name, true);
+    });
 
-    if (numberOfErrors.length === 0 && fieldsNotTouched.length === 0) {
+    if (numberOfErrors.length === 0) {
       console.log("SUBMITTING!");
       resetForm();
     } else {
@@ -30,8 +32,6 @@
   const resetForm = () => {
     inputs.forEach(input => {
       values.updateValue(input.name);
-    });
-    inputs.forEach(input => {
       touched.updateTouched(input.name, false);
     });
   };
@@ -72,9 +72,11 @@
   </div>
 </form>
 
-<h3>Values</h3>
-<pre>{JSON.stringify($values, null, 2)}</pre>
-<h3>Touched</h3>
-<pre>{JSON.stringify($touched, null, 2)}</pre>
-<h3>Errors</h3>
-<pre>{JSON.stringify($errors, null, 2)}</pre>
+{#if debug}
+  <h3>Values</h3>
+  <pre>{JSON.stringify($values, null, 2)}</pre>
+  <h3>Touched</h3>
+  <pre>{JSON.stringify($touched, null, 2)}</pre>
+  <h3>Errors</h3>
+  <pre>{JSON.stringify($errors, null, 2)}</pre>
+{/if}
