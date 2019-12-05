@@ -11,7 +11,6 @@
   export let type = "text";
   export let initialValue = "";
   export let title = "";
-  export let error;
   export let validator = () => true;
   export let errorMessage = "";
   export let multiline;
