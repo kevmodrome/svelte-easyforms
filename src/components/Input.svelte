@@ -1,19 +1,37 @@
 <script>
-  import { autoresize } from "../../actions/autoresize.js";
+  import { onMount } from "svelte";
+  import { values } from "../stores/values.js";
+  import { errors } from "../stores/errors.js";
+  import { touched } from "../stores/touched.js";
+  import { autoresize } from "../actions/autoresize.js";
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
   export let placeholder = "";
   export let full = false;
   export let name = "";
+  export let type = "text";
+  export let initialValue = "";
   export let title = "";
-  export let value = "";
-  export let error = true;
+  export let error;
+  export let validator = () => true;
   export let errorMessage = "";
-  export let type;
+  export let multiline;
   export let textareaHeight = "150px";
 
-  $: dispatch("change", { name, value });
+  onMount(() => {
+    values.updateValue(name, initialValue);
+    errors.updateError(name, !validator(initialValue));
+  });
+
+  function onChange(event) {
+    values.updateValue(name, event.target.value);
+    errors.updateError(name, !validator(event.target.value));
+  }
+  function onBlur(event) {
+    values.updateValue(name, event.target.value);
+    touched.updateTouched(name);
+  }
 </script>
 
 <style lang="scss">
@@ -53,20 +71,28 @@
 
 <label class:full>
   {title}
-  {#if type !== 'textarea'}
-    <input {name} {placeholder} bind:value class:error />
-  {:else}
+  {#if multiline}
     <div style="min-height: {textareaHeight}">
       <textarea
         style="min-height: {textareaHeight}"
-        bind:value
-        class:error
+        on:keyup={onChange}
+        on:blur={onBlur}
+        class:error={$errors[name] && $touched[name]}
         {name}
         {placeholder}
         use:autoresize />
     </div>
+  {:else}
+    <input
+      {type}
+      {name}
+      {placeholder}
+      value={$values[name] || initialValue}
+      on:keyup={onChange}
+      on:blur={onBlur}
+      class:error={$errors[name] && $touched[name]} />
   {/if}
-  {#if error && errorMessage}
+  {#if $errors[name] && $touched[name] && errorMessage}
     <div class="error-container">{errorMessage}</div>
   {/if}
 </label>
