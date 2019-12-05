@@ -79,6 +79,7 @@
         on:keyup={onChange}
         on:change={onChange}
         on:blur={onBlur}
+        value={$values[name] || initialValue}
         class:error={$errors[name] && $touched[name]}
         {name}
         {placeholder}
