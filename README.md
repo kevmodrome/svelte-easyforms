@@ -69,3 +69,11 @@ The Form itself takes a number of props:
 - reset (optional, makes the resetbutton appear)
 - resetText (optional, changes the text on the reset button)
 - debug (optional, displays the values, touched and errors objects)
+
+## TODO
+
+- [ ] Add custom input functionality
+- [ ] Add other types of form elements like radio buttons and checkboxes
+- [ ] Add possibility to pass in more than one validator per input
+- [ ] Make buttons slottable in order to let consumers pass in their own buttons
+- [ ] Make styling more dynamic
