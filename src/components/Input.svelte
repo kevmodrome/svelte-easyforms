@@ -46,6 +46,7 @@
     box-sizing: border-box;
     border: 4px solid #cdd7d6;
     border-radius: 10px;
+    outline: none;
     font-size: 15px;
     padding: 15px;
   }
